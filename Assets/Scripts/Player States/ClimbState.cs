@@ -1,0 +1,85 @@
+using UnityEngine;
+using System.Collections;
+
+public class ClimbState : State
+{
+    // constructor
+    public ClimbState(PlayerScript player, StateMachine sm) : base(player, sm)
+    {
+    }
+
+    public override void Enter()
+    {
+        // this method is called when the state begins
+
+        Debug.Log("entering climb state");
+        //player.sr.color = new Color(0.5f, 0.8f, 0.7f);
+        player.sr.sprite = player.climbSpr;
+    }
+
+    public override void Exit()
+    {
+        // this method is called when the state has finished
+        Debug.Log("exiting climb state");
+
+        //you should disable any running coroutines here
+        player.StopAllCoroutines();
+    }
+
+
+    public override void Update()
+    {
+        if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+        {
+            sm.ChangeState(sm.runState);
+        }
+
+        if (player.jumpAction.IsPressed())
+        {
+            sm.ChangeState(sm.jumpState);
+        }
+
+
+        //example of running a coroutine from a state and not directly from the monobehaviour
+        if (player.crouchAction.IsPressed())
+        {
+            player.StartCoroutine(IdleCo());
+        }
+
+        UIscript.ui.DrawText("*** This is the climb state ***\n");
+        UIscript.ui.DrawText("Space = Jump State");
+        UIscript.ui.DrawText("Left/Right arrows = Move State");
+        UIscript.ui.DrawText("C = Start the coroutine");
+
+
+    }
+
+    public override void FixedUpdate()
+    {
+    }
+
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("collided");
+    }
+
+
+    public IEnumerator IdleCo()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            yield return new WaitForSeconds(2);
+            Debug.Log("Coroutine step 1");
+
+            yield return new WaitForSeconds(2);
+            Debug.Log("Coroutine step 2");
+
+            Debug.Log("Coroutine repeat " + (i + 1));
+
+        }
+        yield break;
+    }
+
+
+
+}
