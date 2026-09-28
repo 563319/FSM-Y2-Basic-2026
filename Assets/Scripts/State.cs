@@ -10,6 +10,8 @@ public abstract class State
     protected PlayerScript player;
     protected StateMachine sm;
 
+    protected Animator anim;
+
     public float verticalInput;
     public float horizontalInput;
 
@@ -37,10 +39,93 @@ public abstract class State
     {
         Debug.Log(text);
     }
-
-
     public void ReadInput()
     {
+    }
+
+    public void SetAnims(int input)
+    {
+        /*
+        isRunning"     1 
+        isIdle"        2
+        isClimbing"    3  
+        isJumping"     4
+        isClimbingEnd" 5          
+        isHammerRun"   6
+        isHammerIdle"  7
+        */
+        if (input == 1)
+        {
+            anim.SetBool("isRunning", true);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isClimbing", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isClimbingEnd", false);
+            anim.SetBool("isHammerRun", false);
+            anim.SetBool("isHammerIdle", false);
+        }
+        if (input == 2)
+        {
+            anim.SetBool("isIdle", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isClimbing", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isClimbingEnd", false);
+            anim.SetBool("isHammerRun", false);
+            anim.SetBool("isHammerIdle", false);
+        }
+        if (input == 3)
+        {
+            anim.SetBool("isClimbing", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isClimbingEnd", false);
+            anim.SetBool("isHammerRun", false);
+            anim.SetBool("isHammerIdle", false);
+        }
+        if (input == 4)
+        {
+            anim.SetBool("isJumping", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isClimbing", false);
+            anim.SetBool("isClimbingEnd", false);
+            anim.SetBool("isHammerRun", false);
+            anim.SetBool("isHammerIdle", false);
+        }
+        if (input == 5)
+        {
+            anim.SetBool("isClimbingEnd", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isClimbing", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isHammerRun", false);
+            anim.SetBool("isHammerIdle", false);
+        }
+        if (input == 6)
+        {
+            anim.SetBool("isHammerRun", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isClimbing", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isClimbingEnd", false);
+            anim.SetBool("isHammerIdle", false);
+        }
+        if (input == 7)
+        {
+            anim.SetBool("isHammerIdle", true);
+            anim.SetBool("isRunning", false);
+            anim.SetBool("isIdle", false);
+            anim.SetBool("isClimbing", false);
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isClimbingEnd", false);
+            anim.SetBool("isHammerRun", false);
+        }
+
+
     }
 
 

@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D rb;
     StateMachine sm;
 
+    public Animator anim;
+
     //define the actions
     public InputAction moveAction;
     public InputAction crouchAction;
@@ -18,13 +20,15 @@ public class PlayerScript : MonoBehaviour
     public InputAction interactAction;
     public InputAction climbAction;
 
-
+    /*
     public Sprite climbSpr;
     public Sprite runSpr;
     public Sprite jumpSpr;
     public Sprite idleSpr;
     public Sprite idleHammerSpr;
     public Sprite runHammerSpr;
+    */
+
     private void Start()
     {
         sm = new StateMachine(this); //"this" means - pass a reference of this script (player script) to the statemachine

@@ -19,7 +19,7 @@ public class RunHammerState : State
         Debug.Log("entering running hammer state");
 
         //player.sr.color = new Color(0.8f, 0.8f, 0.2f);
-        player.sr.sprite = player.runHammerSpr;
+        //player.sr.sprite = player.runHammerSpr;
     }
 
     public override void Exit()
@@ -31,7 +31,7 @@ public class RunHammerState : State
 
     public override void Update()
     {
-
+        SetAnims(6);
         TestMethod("hello");
 
 

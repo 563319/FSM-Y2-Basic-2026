@@ -3,6 +3,7 @@
 //This means it inherits fields and methods from State.cs
 
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class RunState : State
 {
@@ -22,7 +23,7 @@ public class RunState : State
         Debug.Log("entering running state");
 
         //player.sr.color = new Color(0.8f, 0.8f, 0.2f);
-        player.sr.sprite = player.runSpr;
+        //player.sr.sprite = player.runSpr;
     }
 
     public override void Exit()
@@ -36,8 +37,9 @@ public class RunState : State
     {
 
         TestMethod("hello");
+        SetAnims(1);
 
-        
+
 
         ReadInput();
 

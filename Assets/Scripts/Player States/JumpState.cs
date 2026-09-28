@@ -18,7 +18,7 @@ public class JumpState : State
         Debug.Log("entering jumping state");
 
         //player.sr.color = new Color(0.8f, 0.3f, 0.4f);  //change the sprite colour
-        player.sr.sprite = player.jumpSpr;
+        //player.sr.sprite = player.jumpSpr;
     }
 
     public override void Exit()
@@ -29,6 +29,7 @@ public class JumpState : State
     public override void Update()
     {
         ReadInput();
+        SetAnims(4);
 
         if (player.interactAction.IsPressed())
         {

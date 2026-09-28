@@ -18,7 +18,7 @@ public class IdleState : State
 
         Debug.Log("entering idle state");
         //player.sr.color = new Color(0.5f, 0.8f, 0.7f);
-        player.sr.sprite = player.idleSpr;
+        //player.sr.sprite = player.idleSpr;
     }
 
     public override void Exit()
@@ -33,7 +33,9 @@ public class IdleState : State
 
     public override void Update()
     {
-        if( player.moveAction.ReadValue<Vector2>().magnitude > 0.1f )
+        SetAnims(2);
+
+        if ( player.moveAction.ReadValue<Vector2>().magnitude > 0.1f )
         {
             sm.ChangeState(sm.runState);
         }

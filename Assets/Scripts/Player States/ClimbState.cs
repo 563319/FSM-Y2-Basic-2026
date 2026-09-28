@@ -14,7 +14,7 @@ public class ClimbState : State
 
         Debug.Log("entering climb state");
         //player.sr.color = new Color(0.5f, 0.8f, 0.7f);
-        player.sr.sprite = player.climbSpr;
+        //player.sr.sprite = player.climbSpr;
     }
 
     public override void Exit()
@@ -29,6 +29,7 @@ public class ClimbState : State
 
     public override void Update()
     {
+        SetAnims(3);
         if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
         {
             sm.ChangeState(sm.runState);

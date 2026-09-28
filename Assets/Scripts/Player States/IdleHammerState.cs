@@ -13,7 +13,7 @@ public class IdleHammerState : State
 
         Debug.Log("entering idle hammer state");
         //player.sr.color = new Color(0.5f, 0.8f, 0.7f);
-        player.sr.sprite = player.idleHammerSpr;
+        //player.sr.sprite = player.idleHammerSpr;
     }
 
     public override void Exit()
@@ -28,6 +28,7 @@ public class IdleHammerState : State
 
     public override void Update()
     {
+        SetAnims(7);
         if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
         {
             sm.ChangeState(sm.runState);
