@@ -29,7 +29,7 @@ public class JumpState : State
     public override void Update()
     {
         ReadInput();
-        SetAnims(4);
+        SetAnims("jumping");
 
         if (player.interactAction.IsPressed())
         {

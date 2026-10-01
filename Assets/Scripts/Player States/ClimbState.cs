@@ -29,7 +29,7 @@ public class ClimbState : State
 
     public override void Update()
     {
-        SetAnims(3);
+        SetAnims("climbing");
         if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
         {
             sm.ChangeState(sm.runState);

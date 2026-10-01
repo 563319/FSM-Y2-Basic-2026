@@ -43,18 +43,10 @@ public abstract class State
     {
     }
 
-    public void SetAnims(int input)
+    public void SetAnims(string input)
     {
-        /*
-        isRunning"     1 
-        isIdle"        2
-        isClimbing"    3  
-        isJumping"     4
-        isClimbingEnd" 5          
-        isHammerRun"   6
-        isHammerIdle"  7
-        */
-        if (input == 1)
+ 
+        if (input == "running")
         {
             anim.SetBool("isRunning", true);
             anim.SetBool("isIdle", false);
@@ -64,7 +56,7 @@ public abstract class State
             anim.SetBool("isHammerRun", false);
             anim.SetBool("isHammerIdle", false);
         }
-        if (input == 2)
+        if (input == "idle")
         {
             anim.SetBool("isIdle", true);
             anim.SetBool("isRunning", false);
@@ -74,7 +66,7 @@ public abstract class State
             anim.SetBool("isHammerRun", false);
             anim.SetBool("isHammerIdle", false);
         }
-        if (input == 3)
+        if (input == "climbing")
         {
             anim.SetBool("isClimbing", true);
             anim.SetBool("isRunning", false);
@@ -84,7 +76,7 @@ public abstract class State
             anim.SetBool("isHammerRun", false);
             anim.SetBool("isHammerIdle", false);
         }
-        if (input == 4)
+        if (input == "jumping")
         {
             anim.SetBool("isJumping", true);
             anim.SetBool("isRunning", false);
@@ -94,7 +86,7 @@ public abstract class State
             anim.SetBool("isHammerRun", false);
             anim.SetBool("isHammerIdle", false);
         }
-        if (input == 5)
+        if (input == "climbingEnd")
         {
             anim.SetBool("isClimbingEnd", true);
             anim.SetBool("isRunning", false);
@@ -104,7 +96,7 @@ public abstract class State
             anim.SetBool("isHammerRun", false);
             anim.SetBool("isHammerIdle", false);
         }
-        if (input == 6)
+        if (input == "hammerRun")
         {
             anim.SetBool("isHammerRun", true);
             anim.SetBool("isRunning", false);
@@ -114,7 +106,7 @@ public abstract class State
             anim.SetBool("isClimbingEnd", false);
             anim.SetBool("isHammerIdle", false);
         }
-        if (input == 7)
+        if (input == "hammerIdle")
         {
             anim.SetBool("isHammerIdle", true);
             anim.SetBool("isRunning", false);

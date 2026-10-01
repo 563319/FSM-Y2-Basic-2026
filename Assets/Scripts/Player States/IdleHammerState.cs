@@ -28,7 +28,7 @@ public class IdleHammerState : State
 
     public override void Update()
     {
-        SetAnims(7);
+        SetAnims("hammerIdle");
         if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
         {
             sm.ChangeState(sm.runState);

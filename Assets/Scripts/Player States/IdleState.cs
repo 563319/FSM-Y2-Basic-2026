@@ -33,7 +33,8 @@ public class IdleState : State
 
     public override void Update()
     {
-        SetAnims(2);
+        TestMethod("hello");
+        SetAnims("idle");
 
         if ( player.moveAction.ReadValue<Vector2>().magnitude > 0.1f )
         {

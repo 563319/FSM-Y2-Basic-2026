@@ -31,7 +31,7 @@ public class RunHammerState : State
 
     public override void Update()
     {
-        SetAnims(6);
+        SetAnims("hammerRun");
         TestMethod("hello");
 
 

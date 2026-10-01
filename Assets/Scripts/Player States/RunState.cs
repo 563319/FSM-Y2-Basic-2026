@@ -37,7 +37,7 @@ public class RunState : State
     {
 
         TestMethod("hello");
-        SetAnims(1);
+        SetAnims("running");
 
 
 
