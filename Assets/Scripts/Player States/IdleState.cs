@@ -33,15 +33,15 @@ public class IdleState : State
 
     public override void Update()
     {
-        TestMethod("hello");
+        //TestMethod("hello");
         SetAnims("idle");
-
+        GroundCheck();
         if ( player.moveAction.ReadValue<Vector2>().magnitude > 0.1f )
         {
             sm.ChangeState(sm.runState);
         }
 
-        if (player.jumpAction.IsPressed())
+        if (player.jumpAction.IsPressed() && isOnGround == true )
         {
             sm.ChangeState(sm.jumpState);
         }
@@ -73,6 +73,14 @@ public class IdleState : State
     public override void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("collided");
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+        else
+        {
+            isOnGround = false;
+        }
     }
 
 

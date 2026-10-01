@@ -24,6 +24,7 @@ public class RunHammerState : State
 
     public override void Exit()
     {
+        player.hammer.SetActive(false);
         base.Exit();
     }
 
@@ -33,20 +34,39 @@ public class RunHammerState : State
     {
         SetAnims("hammerRun");
         TestMethod("hello");
-
+        FlipPlr();
+        GroundCheck();
+        player.hammer.SetActive(true);
 
 
         ReadInput();
-
-        if (player.interactAction.IsPressed())
+        if (player.hammer != null)
         {
-            sm.ChangeState(sm.idleState);
+            player.hammer.transform.position = player.transform.position + new Vector3(0, 1, 0);//offset
+        }
+        if (hammerTimer > 0.1)
+        {
+            hammerTimer -= Time.deltaTime;
+            if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+            {
+                sm.ChangeState(sm.idleHammerState);
+            }
+        }
+        else
+        {
+            if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+            {
+                sm.ChangeState(sm.idleState);
+            }
+            if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+            {
+                sm.ChangeState(sm.runState);
+            }
         }
 
-        if (player.jumpAction.IsPressed())
-        {
-            sm.ChangeState(sm.jumpState);
-        }
+       
+
+       
 
         //debug move gameObject
         player.rb.linearVelocity = player.moveAction.ReadValue<Vector2>() * speed;

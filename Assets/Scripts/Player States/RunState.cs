@@ -36,19 +36,17 @@ public class RunState : State
     public override void Update()
     {
 
-        TestMethod("hello");
+        //TestMethod("hello");
         SetAnims("running");
-
-
-
+        FlipPlr();
         ReadInput();
-
-        if (player.interactAction.IsPressed())
+        GroundCheck();
+        if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
         {
             sm.ChangeState(sm.idleState);
         }
 
-        if (player.jumpAction.IsPressed())
+        if (player.jumpAction.IsPressed() )//&& isOnGround == true)
         {
             sm.ChangeState(sm.jumpState);
         }
@@ -78,6 +76,13 @@ public class RunState : State
         {
             collision.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0);
         }
+        if (collision.CompareTag("Hammer") == true)
+        {
+            sm.ChangeState(sm.runHammerState);
+            GameObject.Destroy(collision.gameObject);
+
+            
+        }
     }
     public override void OnTriggerExit2D(Collider2D collision)
     {
@@ -86,6 +91,17 @@ public class RunState : State
         if (collision.tag == "enemy")
         {
             collision.GetComponent<SpriteRenderer>().color = new Color(0.1f, 0.1f, 0.1f);
+        }
+    }
+    public override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+        else
+        {
+            isOnGround = false;
         }
     }
 

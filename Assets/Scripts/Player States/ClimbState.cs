@@ -35,17 +35,9 @@ public class ClimbState : State
             sm.ChangeState(sm.runState);
         }
 
-        if (player.jumpAction.IsPressed())
-        {
-            sm.ChangeState(sm.jumpState);
-        }
+        
 
 
-        //example of running a coroutine from a state and not directly from the monobehaviour
-        if (player.crouchAction.IsPressed())
-        {
-            player.StartCoroutine(IdleCo());
-        }
 
         UIscript.ui.DrawText("*** This is the climb state ***\n");
         UIscript.ui.DrawText("Space = Jump State");

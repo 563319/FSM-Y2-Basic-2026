@@ -20,7 +20,7 @@ public class IdleHammerState : State
     {
         // this method is called when the state has finished
         Debug.Log("exiting idle hammer state");
-
+        player.hammer.SetActive(false);
         //you should disable any running coroutines here
         player.StopAllCoroutines();
     }
@@ -29,22 +29,36 @@ public class IdleHammerState : State
     public override void Update()
     {
         SetAnims("hammerIdle");
-        if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+        FlipPlr();
+        GroundCheck();
+        player.hammer.SetActive(true);
+        if (hammerTimer > 0.1)
         {
-            sm.ChangeState(sm.runState);
+            hammerTimer -= Time.deltaTime;
+            if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+            {
+                sm.ChangeState(sm.runHammerState);
+            }
         }
-
-        if (player.jumpAction.IsPressed())
+        else
         {
-            sm.ChangeState(sm.jumpState);
+            
+            if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+            {
+                sm.ChangeState(sm.idleState);
+            }
+            if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+            {
+                sm.ChangeState(sm.runState);
+            }
         }
+        
+
+        
+
+     
 
 
-        //example of running a coroutine from a state and not directly from the monobehaviour
-        if (player.crouchAction.IsPressed())
-        {
-            player.StartCoroutine(IdleCo());
-        }
 
         UIscript.ui.DrawText("*** This is the idle hammer state ***\n");
         UIscript.ui.DrawText("Space = Jump State");

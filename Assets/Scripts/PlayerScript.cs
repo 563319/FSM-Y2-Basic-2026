@@ -4,6 +4,7 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     public InputAction interactAction;
     public InputAction climbAction;
 
+    public GameObject hammer;
     /*
     public Sprite climbSpr;
     public Sprite runSpr;
@@ -44,6 +46,7 @@ public class PlayerScript : MonoBehaviour
         jumpAction = InputSystem.actions.FindAction("Jump");
         climbAction = InputSystem.actions.FindAction("Climb");
 
+       
 
     }
 
@@ -75,6 +78,8 @@ public class PlayerScript : MonoBehaviour
     {
         sm.currentState.OnTriggerExit2D(collision);
     }
+
+   
 
 
 
