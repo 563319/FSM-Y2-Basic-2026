@@ -48,8 +48,8 @@ public class UIscript : MonoBehaviour
     private void OnGUI()
     {
         string text = sb.ToString();
-        GUILayout.BeginArea(new Rect(30f, 30f, 800f, 800f));
-        GUILayout.Label($"<color='white'><size=20>{text}</size></color>");
+        GUILayout.BeginArea(new Rect(50f, 50f, 2000f, 2000f));
+        GUILayout.Label($"<color='white'><size=50>{text}</size></color>");
         GUILayout.EndArea();
     }
 
