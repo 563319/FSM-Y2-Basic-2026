@@ -42,7 +42,7 @@ public class RunState : State
         ReadInput();
         GroundCheck(-0.3f, 0);
         GroundCheck(0.3f, 0);
-        if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+        if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) < 0.1f)
         {
             sm.ChangeState(sm.idleState);
         }

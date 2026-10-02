@@ -37,7 +37,7 @@ public class IdleHammerState : State
         if (hammerTimer > 0.1)
         {
             hammerTimer -= Time.deltaTime;
-            if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+            if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) > 0.1f)
             {
                 sm.ChangeState(sm.runHammerState);
             }
@@ -45,11 +45,11 @@ public class IdleHammerState : State
         else
         {
             
-            if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+            if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) < 0.1f)
             {
                 sm.ChangeState(sm.idleState);
             }
-            if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+            if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) > 0.1f)// old player.moveAction.ReadValue<Vector2>().magnitude > 0.1f 
             {
                 sm.ChangeState(sm.runState);
             }

@@ -52,18 +52,18 @@ public class RunHammerState : State
         if (hammerTimer > 0.1)
         {
             hammerTimer -= Time.deltaTime;
-            if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+            if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) < 0.1f)
             {
                 sm.ChangeState(sm.idleHammerState);
             }
         }
         else
         {
-            if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
+            if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) < 0.1f)
             {
                 sm.ChangeState(sm.idleState);
             }
-            if (player.moveAction.ReadValue<Vector2>().magnitude > 0.1f)
+            if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) > 0.1f)// old player.moveAction.ReadValue<Vector2>().magnitude > 0.1f 
             {
                 sm.ChangeState(sm.runState);
             }
