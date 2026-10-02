@@ -16,7 +16,8 @@ public abstract class State
     public float verticalInput;
     public float horizontalInput;
 
-    protected float hammerTimer = 6;
+    protected float hammerTimer = 5;
+    protected float hammerTimeMax = 5;
     protected bool isOnGround;
     protected LayerMask groundLayerMask;
     protected bool result;

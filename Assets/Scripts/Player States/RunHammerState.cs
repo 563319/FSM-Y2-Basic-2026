@@ -25,7 +25,7 @@ public class RunHammerState : State
     public override void Exit()
     {
         //player.hammer.SetActive(false);
-        hammerTimer = 6;
+        hammerTimer = hammerTimeMax;
         base.Exit();
     }
 
