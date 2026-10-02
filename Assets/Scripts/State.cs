@@ -23,6 +23,7 @@ public abstract class State
     protected bool isGrounded;
     protected bool playerHasJumped;
 
+    protected GameObject playerEmpty;
     //protected GameObject hammer;
 
 
@@ -55,12 +56,12 @@ public abstract class State
     public void ReadInput()
     {
     }
-    public void GroundCheck()
+    public void GroundCheck(float xoffs, float yoffs)
     {
         float rayLength = 0.1f; // length of raycast
         bool hitSomething = false;
-        float xoffs = 0f;
-        float yoffs = 0f;
+        //float xoffs = 0f;
+        //float yoffs = 0f;
         // convert x and y offset into a Vector3 
         Vector3 offset = new Vector3(xoffs, yoffs, 0);
 
@@ -85,16 +86,25 @@ public abstract class State
         isGrounded = hitSomething;
 
     }
+    
     public void FlipPlr()
     {
+        playerEmpty = GameObject.FindGameObjectWithTag("PlayerEmpty");
         if (player.rb.linearVelocityX > 0)
         {
-            player.sr.flipX = false;
+            //player.sr.flipX = false;
+            //player.hammer.transform.Rotate(new Vector3(0, -180, 0));
+            //player.hammer.GetComponent<SpriteRenderer>().flipX = false;
+            playerEmpty.transform.rotation = new Quaternion(0, 0, 0, 0);
         }
         if (player.rb.linearVelocityX < 0)
         {
-            player.sr.flipX = true;
+            //player.sr.flipX = true;
+            //player.hammer.transform.Rotate(new Vector3(0, -180, 0));
+            //player.hammer.GetComponent<SpriteRenderer>().flipX = true;
+            playerEmpty.transform.rotation = new Quaternion(0, 180, 0, 0);
         }
+        
     }
   
 

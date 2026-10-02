@@ -35,7 +35,8 @@ public class IdleState : State
     {
         //TestMethod("hello");
         SetAnims("idle");
-        GroundCheck();
+        GroundCheck(-0.3f, 0);
+        GroundCheck(0.3f, 0);
         if ( player.moveAction.ReadValue<Vector2>().magnitude > 0.1f )
         {
             sm.ChangeState(sm.runState);

@@ -24,7 +24,8 @@ public class RunHammerState : State
 
     public override void Exit()
     {
-        player.hammer.SetActive(false);
+        //player.hammer.SetActive(false);
+        hammerTimer = 6;
         base.Exit();
     }
 
@@ -35,15 +36,13 @@ public class RunHammerState : State
         SetAnims("hammerRun");
         TestMethod("hello");
         FlipPlr();
-        GroundCheck();
-        player.hammer.SetActive(true);
+        GroundCheck(-0.3f, 0);
+        GroundCheck(0.3f, 0);
+        //player.hammer.SetActive(true);
 
 
         ReadInput();
-        if (player.hammer != null)
-        {
-            player.hammer.transform.position = player.transform.position + new Vector3(0, 1, 0);//offset
-        }
+       
         if (hammerTimer > 0.1)
         {
             hammerTimer -= Time.deltaTime;

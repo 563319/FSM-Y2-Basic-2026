@@ -32,7 +32,8 @@ public class JumpState : State
 
     public override void Update()
     {
-        GroundCheck();
+        GroundCheck(-0.3f, 0);
+        GroundCheck(0.3f, 0);
         ReadInput();
         SetAnims("jumping");
         FlipPlr();

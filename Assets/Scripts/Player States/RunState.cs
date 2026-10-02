@@ -40,7 +40,8 @@ public class RunState : State
         SetAnims("running");
         FlipPlr();
         ReadInput();
-        GroundCheck();
+        GroundCheck(-0.3f, 0);
+        GroundCheck(0.3f, 0);
         if (player.moveAction.ReadValue<Vector2>().magnitude < 0.1f)
         {
             sm.ChangeState(sm.idleState);
@@ -54,7 +55,7 @@ public class RunState : State
         {
             sm.ChangeState(sm.climbState);
         }
-
+        
         //debug move gameObject
         player.rb.linearVelocity = player.moveAction.ReadValue<Vector2>() * speed;
 

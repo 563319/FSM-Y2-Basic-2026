@@ -20,8 +20,9 @@ public class IdleHammerState : State
     {
         // this method is called when the state has finished
         Debug.Log("exiting idle hammer state");
-        player.hammer.SetActive(false);
+        //player.hammer.SetActive(false);
         //you should disable any running coroutines here
+        hammerTimer = 6;
         player.StopAllCoroutines();
     }
 
@@ -30,8 +31,9 @@ public class IdleHammerState : State
     {
         SetAnims("hammerIdle");
         FlipPlr();
-        GroundCheck();
-        player.hammer.SetActive(true);
+        GroundCheck(-0.3f, 0);
+        GroundCheck(0.3f, 0);
+        //player.hammer.SetActive(true);
         if (hammerTimer > 0.1)
         {
             hammerTimer -= Time.deltaTime;
