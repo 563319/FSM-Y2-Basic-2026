@@ -39,7 +39,7 @@ public class RunState : State
         //TestMethod("hello");
         SetAnims("running");
         FlipPlr();
-        ReadInput();
+       
         GroundCheck(-0.3f, 0);
         GroundCheck(0.3f, 0);
         if (Mathf.Abs(player.moveAction.ReadValue<Vector2>().x) < 0.1f)

@@ -34,7 +34,6 @@ public class JumpState : State
     {
         GroundCheck(-0.3f, 0);
         GroundCheck(0.3f, 0);
-        ReadInput();
         SetAnims("jumping");
         FlipPlr();
         Debug.Log("is plr touching ground: " + isOnGround);

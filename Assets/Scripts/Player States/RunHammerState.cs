@@ -40,14 +40,12 @@ public class RunHammerState : State
     public override void Update()
     {
         SetAnims("hammerRun");
-        TestMethod("hello");
+        
         FlipPlr();
         GroundCheck(-0.3f, 0);
         GroundCheck(0.3f, 0);
         //player.hammer.SetActive(true);
 
-
-        ReadInput();
        
         if (hammerTimer > 0.1)
         {

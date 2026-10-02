@@ -54,9 +54,7 @@ public abstract class State
     {
         Debug.Log(text);
     }
-    public void ReadInput()
-    {
-    }
+    
     public void GroundCheck(float xoffs, float yoffs)
     {
         float rayLength = 0.1f; // length of raycast
