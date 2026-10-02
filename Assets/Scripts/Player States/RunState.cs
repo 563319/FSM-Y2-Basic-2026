@@ -57,8 +57,8 @@ public class RunState : State
         }
         
         //debug move gameObject
-        player.rb.linearVelocity = player.moveAction.ReadValue<Vector2>() * speed;
-
+        //player.rb.linearVelocity = player.moveAction.ReadValue<Vector2>() * speed;
+        player.rb.linearVelocityX = player.moveAction.ReadValue<Vector2>().x * speed;
 
         UIscript.ui.DrawText("*** This is the running state ***\n");
         UIscript.ui.DrawText("Left/Right arrows = Move Sprite");

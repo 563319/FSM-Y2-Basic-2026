@@ -22,7 +22,7 @@ public class IdleHammerState : State
         Debug.Log("exiting idle hammer state");
         //player.hammer.SetActive(false);
         //you should disable any running coroutines here
-        hammerTimer = hammerTimeMax;
+        
         player.StopAllCoroutines();
     }
 

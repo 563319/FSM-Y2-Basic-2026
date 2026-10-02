@@ -35,9 +35,9 @@ public class ClimbState : State
             sm.ChangeState(sm.runState);
         }
 
-        
 
 
+        //player.rb.linearVelocityY = player.moveAction.ReadValue<Vector2>().y * speed;
 
         UIscript.ui.DrawText("*** This is the climb state ***\n");
         UIscript.ui.DrawText("Space = Jump State");

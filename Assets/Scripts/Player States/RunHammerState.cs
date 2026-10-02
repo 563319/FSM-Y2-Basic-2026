@@ -12,6 +12,12 @@ public class RunHammerState : State
 
     public override void Enter()
     {
+        if (sm.lastState == sm.runState)
+        {
+            hammerTimer = hammerTimeMax;
+
+        }
+
         speed = 3;
         base.Enter();
         horizontalInput = verticalInput = 0.0f;
@@ -25,7 +31,7 @@ public class RunHammerState : State
     public override void Exit()
     {
         //player.hammer.SetActive(false);
-        hammerTimer = hammerTimeMax;
+        
         base.Exit();
     }
 
@@ -63,13 +69,10 @@ public class RunHammerState : State
             }
         }
 
-       
-
-       
 
         //debug move gameObject
-        player.rb.linearVelocity = player.moveAction.ReadValue<Vector2>() * speed;
-
+        //player.rb.linearVelocity = player.moveAction.ReadValue<Vector2>() * speed;
+        player.rb.linearVelocityX = player.moveAction.ReadValue<Vector2>().x * speed;
 
         UIscript.ui.DrawText("*** This is the running hammer state ***\n");
         UIscript.ui.DrawText("Left/Right arrows = Move Sprite");
