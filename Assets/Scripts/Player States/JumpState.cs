@@ -17,7 +17,7 @@ public class JumpState : State
     public override void Enter()
     {
         Debug.Log("entering jumping state");
-        player.rb.linearVelocityY = 10f;
+        player.rb.linearVelocityY = 7.5f;//jump velocity
         groundLayerMask = LayerMask.GetMask("Ground");
         playerHasJumped = true;
         //player.sr.color = new Color(0.8f, 0.3f, 0.4f);  //change the sprite colour
